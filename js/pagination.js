@@ -98,5 +98,15 @@ document.getElementsByTagName('button')[0].addEventListener('click', function(ev
 });
 
 function searchStudents(studentString){
-  alert('You want to find ' + studentString);
+  var lowerStudentString = studentString.toLowerCase();
+  hideAll();
+  var items = document.getElementsByClassName("student-item");
+  for(var i = 0; i < items.length; i++){
+    var name = items[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+    var email = items[i].getElementsByClassName('email')[0].innerText.toLowerCase();
+    if(name.indexOf(lowerStudentString) != '-1' || email.indexOf(lowerStudentString) != '-1'){
+      items[i].className = "student-item cf";
+      console.log(items[i].className);
+    }
+  }
 }
